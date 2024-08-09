@@ -45,6 +45,7 @@ public class BaseTest
         // Wait for the page to load after login
         await Page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
+
         // Handle the pop-up
         await HandlePopUp();
 
@@ -58,25 +59,61 @@ public class BaseTest
         Assert.That(displayedUsername, Does.Contain(Username), $"Expected username '{Username}' not found in displayed text '{displayedUsername}'");
     }
 
+    // private async Task HandlePopUp()
+    // {
+    //     // Wait for the pop-up to appear
+    //     await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
+    //     {
+    //         State = WaitForSelectorState.Visible,
+    //         Timeout = 30000 // 30 seconds timeout
+    //     });
+
+    //     // Click the close button
+    //     await BaseFunctions.ClickAsync(Locators.Popups.CloseButton);
+
+    //     // Wait for the pop-up to disappear
+    //     await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
+    //     {
+    //         State = WaitForSelectorState.Hidden,
+    //         Timeout = 5000 // 5 seconds timeout
+    //     });
+
+    //     Console.WriteLine("Pop-up closed successfully");
+    // }
     private async Task HandlePopUp()
     {
-        // Wait for the pop-up to appear
-        await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
+        try
         {
-            State = WaitForSelectorState.Visible,
-            Timeout = 30000 // 30 seconds timeout
-        });
+            // Wait for the pop-up to appear, but don't throw an error if it doesn't
+            var popUpVisible = await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
+            {
+                State = WaitForSelectorState.Visible,
+                Timeout = 5000 // Wait for 5 seconds max
+            });
 
-        // Click the close button
-        await BaseFunctions.ClickAsync(Locators.Popups.CloseButton);
+            // If the pop-up is visible, click the close button
+            if (popUpVisible != null)
+            {
+                await BaseFunctions.ClickAsync(Locators.Popups.CloseButton);
 
-        // Wait for the pop-up to disappear
-        await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
+                // Wait for the pop-up to disappear
+                await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
+                {
+                    State = WaitForSelectorState.Hidden,
+                    Timeout = 5000 // Wait for 5 seconds max
+                });
+
+                Console.WriteLine("Pop-up closed successfully");
+            }
+            else
+            {
+                Console.WriteLine("Pop-up did not appear, proceeding without closing it.");
+            }
+        }
+        catch (TimeoutException)
         {
-            State = WaitForSelectorState.Hidden,
-            Timeout = 5000 // 5 seconds timeout
-        });
-
-        Console.WriteLine("Pop-up closed successfully");
+            Console.WriteLine("Pop-up did not appear within the timeout, proceeding without closing it.");
+        }
     }
+
 }

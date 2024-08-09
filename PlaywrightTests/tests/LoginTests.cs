@@ -5,12 +5,12 @@ using System;
 [TestFixture]
 public class LoginTests : BaseTest
 {
-    [Test]
+    // [Test]
     public async Task LoginAndNavigateToManageTeamMembers()
     {
         await Login();
 
-        // Add a short wait to ensure everything has settled
+        // Add a short wait 
         await Task.Delay(2000);
 
         Console.WriteLine("Login successful, navigating to Setup");

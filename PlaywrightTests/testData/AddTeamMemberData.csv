@@ -1,0 +1,5 @@
+FirstName,LastName,Email,Phone,Username,Password,ConfirmPassword,RoleValue,TeacherTypeValue,ExpectedResult
+Amaruniquefirst5,Amaruniquelast5,amarunique5@emailid.com,999887542,amaruniqueid5,Password123!,Password123!,372076,1,Pass
+Amaruniquefirst,Amaruniquelast,amarunique@emailid.com,999887542,amaruniqueid,Password123!,Password123!,372076,1,Fail
+Amarduplicatefirst,Amarduplicatelast,amarduplicate@emailid.com,999887542,amaruniqueid,Password123!,Password123!,372076,1,Fail
+

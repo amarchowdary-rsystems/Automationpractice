@@ -405,4 +405,4 @@ D:\Automationpractice\PlaywrightTests\obj\Debug\net8.0\refint\PlaywrightTests.dl
 D:\Automationpractice\PlaywrightTests\obj\Debug\net8.0\PlaywrightTests.pdb
 D:\Automationpractice\PlaywrightTests\obj\Debug\net8.0\PlaywrightTests.genruntimeconfig.cache
 D:\Automationpractice\PlaywrightTests\obj\Debug\net8.0\ref\PlaywrightTests.dll
-D:\Automationpractice\PlaywrightTests\bin\Debug\net8.0\credentials.csv
+D:\Automationpractice\PlaywrightTests\obj\Debug\net8.0\PlaywrightTests.sourcelink.json
