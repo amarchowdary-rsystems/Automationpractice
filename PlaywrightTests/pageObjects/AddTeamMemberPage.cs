@@ -54,35 +54,7 @@ public class AddTeamMemberPage
         return await _page.IsVisibleAsync("//input[@placeholder='Search team members']");
     }
 
-    // public async Task HandleAlertOrSuccessAsync(string alertSelector, string searchBoxSelector, string outputFilePath)
-    // {
-    //     if (await _page.IsVisibleAsync(alertSelector))
-    //     {
-    //         string alertText = await _page.TextContentAsync(alertSelector);
-    //         // Log the alert message
-    //         Console.WriteLine($"Alert message displayed: {alertText}");
-    //         // If the message is "Saved", do not fail the test
-    //         if (alertText.Contains("Saved", StringComparison.OrdinalIgnoreCase))
-    //         {
-    //             // The operation was successful, continue the test
-    //             Console.WriteLine("Team member creation was successful.");
-    //         }
-    //         else{
-    //         await File.AppendAllTextAsync(outputFilePath, $"Error: {alertText}\n");
-    //         Assert.Fail($"Team member creation failed with error: {alertText}");
-
-    //         }
-    //     }
-    //     await _page.WaitForTimeoutAsync(2000);
-    //     if (await _page.IsVisibleAsync(searchBoxSelector))
-    //     {
-    //         Console.WriteLine("Team member saved successfully, proceeding to search for the team member.");
-    //     }
-    //     else
-    //     {
-    //         Assert.Fail("Neither alert nor success indicator was found.");
-    //     }
-    // }
+    
     public async Task<bool> HandleAlertOrSuccessAsync(string alertSelector, string searchBoxSelector, string outputFilePath)
     {
         if (await _page.IsVisibleAsync(alertSelector))
@@ -165,15 +137,7 @@ if (!found)
 }
 
 
-        // // Check if the team member's full name is in the first row of the search results
-        // string nameInResults = await _page.TextContentAsync("//tbody/tr[1]/td[1]");
-        // Assert.AreEqual(fullName, nameInResults, "The team member's name did not match the expected value.");
-
-        // // Check the role in the search results
-        // string roleInResults = await _page.TextContentAsync("//tbody/tr[1]/td[2]");
-        // //Assert.AreEqual(roleValue, roleInResults, "The role did not match the expected value.");
-
-        // // Additional verifications for other columns can be added here
+        
 
         Console.WriteLine("Team member data matches the expected values.");
     }
