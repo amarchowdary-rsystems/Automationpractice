@@ -59,27 +59,7 @@ public class BaseTest
         Assert.That(displayedUsername, Does.Contain(Username), $"Expected username '{Username}' not found in displayed text '{displayedUsername}'");
     }
 
-    // private async Task HandlePopUp()
-    // {
-    //     // Wait for the pop-up to appear
-    //     await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
-    //     {
-    //         State = WaitForSelectorState.Visible,
-    //         Timeout = 30000 // 30 seconds timeout
-    //     });
-
-    //     // Click the close button
-    //     await BaseFunctions.ClickAsync(Locators.Popups.CloseButton);
-
-    //     // Wait for the pop-up to disappear
-    //     await Page.WaitForSelectorAsync(Locators.Popups.CloseButton, new PageWaitForSelectorOptions
-    //     {
-    //         State = WaitForSelectorState.Hidden,
-    //         Timeout = 5000 // 5 seconds timeout
-    //     });
-
-    //     Console.WriteLine("Pop-up closed successfully");
-    // }
+    
     private async Task HandlePopUp()
     {
         try
